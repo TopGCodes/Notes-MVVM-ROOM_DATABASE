@@ -6,6 +6,7 @@ import android.icu.text.CaseMap
 import android.icu.text.SimpleDateFormat
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.ViewModel
@@ -33,6 +34,8 @@ class AddNote : AppCompatActivity() {
         supportActionBar?.hide()
 
 
+        
+
 
 
         viewModel = ViewModelProvider(
@@ -47,14 +50,11 @@ class AddNote : AppCompatActivity() {
             var noteTitle = intent.getStringExtra("noteTitle")
             var noteDesc = intent.getStringExtra("noteDesc")
             var noteDate = intent.getStringExtra("noteDate")
-            var noteId = intent.getIntExtra("noteId", noteIdpassed)
             binding.addNote.setText(noteDesc)
             binding.addTitle.setText(noteTitle)
         }
 
         binding.imgTickbtn.setOnClickListener {
-
-
             ///this is used when user wants to update an note
             if (noteType.equals("edit")) {
                 var updatedTitle = binding.addTitle.text.toString()
@@ -67,7 +67,6 @@ class AddNote : AppCompatActivity() {
                     viewModel.update(updatedNote)
                     backToMainActivity()
                     Toast.makeText(this@AddNote, "Note Updated..", Toast.LENGTH_LONG).show()
-
                 }
             }
             var newtitle = binding.addTitle.text.toString()

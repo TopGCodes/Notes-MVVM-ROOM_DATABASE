@@ -45,6 +45,7 @@ class notesAdapter(
 
 
 
+
         holder.card_layout.setOnClickListener {
             Mylistener.onItemClick(NotesList.get(position))
         }
@@ -108,6 +109,7 @@ class notesAdapter(
         var title = itemView.findViewById<TextView>(R.id.Title)
         var note = itemView.findViewById<TextView>(R.id.Note)
         var timeOrdate = itemView.findViewById<TextView>(R.id.Time)
+
 
     }
 

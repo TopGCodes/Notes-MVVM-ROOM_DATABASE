@@ -24,7 +24,7 @@ import com.example.notes.Models.NoteViewmodel
 import com.example.notes.R
 import com.example.notes.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), notesAdapter.Noteitemclicklistener,notesAdapter.OnDeleteclicklistener
+class MainActivity : AppCompatActivity(), notesAdapter.Noteitemclicklistener, notesAdapter.OnDeleteclicklistener
    {
     private lateinit var binding : ActivityMainBinding
 
@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity(), notesAdapter.Noteitemclicklistener,not
     private lateinit var viewModel: NoteViewmodel
     private lateinit var database: NoteDatabase
     private lateinit var adapter: notesAdapter
-    private lateinit var selectedNote: Note
+
 
 
 
@@ -50,8 +50,7 @@ class MainActivity : AppCompatActivity(), notesAdapter.Noteitemclicklistener,not
         init()
         //initialize the UI or ViewModel
         viewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.AndroidViewModelFactory.getInstance(application)
+            this, ViewModelProvider.AndroidViewModelFactory.getInstance(application)
         ).get(NoteViewmodel::class.java)
 
 
