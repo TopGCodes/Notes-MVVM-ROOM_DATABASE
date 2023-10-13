@@ -5,6 +5,7 @@ import com.example.notes.Models.Note
 
 class noteRepository(private val noteDAO : noteDAO) {
 
+    //Live data
   var allNotes : LiveData<List<Note>> = noteDAO.getAllNotes()
 
 
