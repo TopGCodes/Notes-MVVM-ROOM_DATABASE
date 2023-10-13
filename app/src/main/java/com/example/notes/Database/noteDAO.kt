@@ -9,17 +9,41 @@ import com.example.notes.Models.Note
 interface noteDAO {
 
 
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(note : Note)
+    suspend fun insert(note: Note)
 
     @Delete
-    suspend fun  delete(note : Note)
+    suspend fun delete(note: Note)
 
-    @Query("SELECT * FROM Notes_table order by id ASC")
-     fun  getAllNotes() : LiveData<List<Note>>
+    @Query("SELECT * FROM Notes_Table")
+    fun getAllNotes() : LiveData<List<Note>>
 
-    @Query("UPDATE Notes_table Set title = :title, Note = :Note WHERE id = :id")
-    suspend fun  update(id : Int?, title : String?, Note : String?)
+    @Query("UPDATE Notes_table set title = title, Note = Note WHERE id = id")
+    suspend fun update(id : Int?,title : String?, Note : String?)
+
+
+
+
+
+
+
+
+
+
+
+
+//    @Insert(onConflict = OnConflictStrategy.REPLACE)
+//    suspend fun insert(note : Note)
+//
+//    @Delete
+//    suspend fun  delete(note : Note)
+//
+//    @Query("SELECT * FROM Notes_table order by id ASC")
+//     fun  getAllNotes() : LiveData<List<Note>>
+//
+//    @Query("UPDATE Notes_table Set title = :title, Note = :Note WHERE id = :id")
+//    suspend fun  update(id : Int?, title : String?, Note : String?)
 
 
 }

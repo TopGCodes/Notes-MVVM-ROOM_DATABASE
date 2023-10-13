@@ -6,6 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.notes.Models.Note
 import com.example.notes.utilities.DATABASE_NAME
+import java.util.concurrent.locks.Lock
 
 @Database(entities = arrayOf(Note::class), version = 1, exportSchema = false)
 abstract class NoteDatabase : RoomDatabase() {
@@ -13,10 +14,8 @@ abstract class NoteDatabase : RoomDatabase() {
     abstract fun getNoteDao(): noteDAO
 
     companion object {
-
         @Volatile
         private var INSTANCE: NoteDatabase? = null
-
         fun getDatabase(context: Context): NoteDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
@@ -24,11 +23,9 @@ abstract class NoteDatabase : RoomDatabase() {
                     DATABASE_NAME
                 ).build()
                 INSTANCE = instance
-
                 instance
             }
         }
-
     }
 
 }
